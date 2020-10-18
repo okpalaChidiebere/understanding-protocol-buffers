@@ -1,0 +1,19 @@
+syntax = "proto3"; //specifying the version of protocol i am using. version 3 is the latest
+
+/*Most things in protocol are labeled as a message
+Protocol has a serialization sequence where for every property(or keyName for JSON), you label it with the position. This is where protocol maintains its compatibility as you upgrade your file*/
+message Employee{
+    int32 id = 1; //label property
+    string name = 2;
+    float salary = 3;
+}
+ 
+/*Building an array of Employees. This will be similar to array.push in javascript*/
+message Employees{
+    repeated Employee employees = 1; //the key work here is 'repeated' that creates the array
+}
+
+/*A protofile is a schema definition of your structured data or messages
+You as a developer have the responsibility to convert the protofile to the language of choice with your classes. In our case, it is Javascript
+Google built a compiler called protoC where you input your protofile and what language you want to transpile to and you get your protoFile converted to the desired language eg C++, Python, Js, Go, etc */
+/*One good thing about protocol is that it is a neutral language. There is built in tool by google that converts this protocol to any programming language you want*/
